@@ -39,8 +39,11 @@ def validateFilename(filename):
 
 def validateURL(url):
      try:
-        time.sleep(random.randint(1, 5))
-        r = urllib2.urlopen(url)
+        try:
+            r = urllib2.urlopen(url)
+        except:
+            time.sleep(random.randint(1, 5))
+            r = urllib2.urlopen(url)
         count = 1
         while r.getcode() == 500 and count < 4:
             print ("Attempt {0} - Status code: {1}. Retrying.".format(count, r.status_code))
