@@ -40,6 +40,7 @@ def validateFilename(filename):
 def validateURL(url):
 #     try:
         time.sleep(random.randint(1, 5))
+        print url
         r = requests.get(url, allow_redirects=True, timeout=60)
         count = 1
         print r.text
