@@ -41,14 +41,14 @@ def validateURL(url):
 #     try:
         time.sleep(random.randint(1, 5))
         print url
-        r = requests.get(url, allow_redirects=True, timeout=60)
+        r = requests.get(url, timeout=60)
         count = 1
         print r.text
         while r.status_code == 500 and count < 4:
             print ("Attempt {0} - Status code: {1}. Retrying.".format(count, r.status_code))
             count += 1
             time.sleep(random.randint(1, 5))
-            r = requests.get(url, allow_redirects=True, timeout=60)
+            r = requests.get(url, timeout=60)
         sourceFilename = r.headers.get('Content-Disposition')
 
         if sourceFilename:
