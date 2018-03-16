@@ -38,7 +38,7 @@ def validateFilename(filename):
 
 
 def validateURL(url):
-    try:
+#     try:
         time.sleep(random.randint(1, 5))
         r = requests.get(url, allow_redirects=True, timeout=60)
         count = 1
@@ -58,9 +58,9 @@ def validateURL(url):
         validURL = r.status_code == 200
         validFiletype = ext.lower() in ['.csv', '.xls', '.xlsx']
         return validURL, validFiletype
-    except:
-        print ("Error validating URL.")
-        return False, False
+#     except:
+#         print ("Error validating URL.")
+#         return False, False
 
 def validate(filename, file_url):
     validFilename = validateFilename(filename)
