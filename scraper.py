@@ -8,7 +8,7 @@ import scraperwiki
 import urllib2
 from datetime import datetime
 from bs4 import BeautifulSoup
-
+import time
 
 #### FUNCTIONS 1.2
 import requests    # import requests to validate filetype
@@ -39,11 +39,13 @@ def validateFilename(filename):
 
 def validateURL(url):
     try:
+        time.sleep(3)
         r = requests.get(url, allow_redirects=True, timeout=60)
         count = 1
         while r.status_code == 500 and count < 4:
             print ("Attempt {0} - Status code: {1}. Retrying.".format(count, r.status_code))
             count += 1
+            time.sleep(3)
             r = requests.get(url, allow_redirects=True, timeout=60)
         sourceFilename = r.headers.get('Content-Disposition')
 
